@@ -63,7 +63,7 @@ public class JasperCtl extends BaseCtl<MarksheetForm, MarksheetDTO, MarksheetSer
 
 	/** For jasper report */
 	@Value("${jasper.path}")
-	String path = null;
+	String path ;
 
 	/** The context. */
 
