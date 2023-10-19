@@ -80,7 +80,7 @@ public class UserCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 		//res.setSuccess(true);
 		res.addMessage("Logout Successfully");
 		//res.addResult("roleList", list);
-		System.out.println("vipin logout");
+		System.out.println("ram logout");
 		return res;
 	}
 
