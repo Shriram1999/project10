@@ -1,3 +1,4 @@
+
 package com.rays.common;
 
 import java.util.Date;
@@ -27,7 +28,7 @@ import com.rays.dto.UserDTO;
 /**
  * Base controller class contains get, search, save, delete REST APIs
  * 
- * @author Shriram Patel
+ * @author Aakash Rathod
  */
 public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends BaseServiceInt<T>> {
 
@@ -236,15 +237,6 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 			T dto = (T) form.getDto();
 			System.out.println("237----------->" + dto);
 			if (dto.getId() != null && dto.getId() > 0) {
-                      T existDto1 = (T) baseService.findByUniqueKey(dto.getUniqueKey(), dto.getUniqueValue(),userContext);
-							
-					if (existDto1 != null && dto.getId() !=existDto1.getId()) {
-						System.out.println("247----------->" + existDto1);
-						res.addMessage(dto.getLabel() + " already exist");
-						res.setSuccess(false);
-						return res;
-					}
-				
 				baseService.update(dto, userContext);
 			} else {
 				System.out.println("before calling add of baseservice");
