@@ -17,13 +17,13 @@ import com.rays.common.FrontCtl;
 
 
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 @SpringBootApplication
 public class ProjectOrsApplication extends SpringBootServletInitializer{
 
-	@Autowired 
+	@Autowired
 	private Environment env;
 
 	@Autowired
@@ -33,11 +33,11 @@ public class ProjectOrsApplication extends SpringBootServletInitializer{
 		SpringApplication.run(ProjectOrsApplication.class, args);
 	}
 
-	/**       
+	/**
 	 * Enables CORS to all urls
 	 * 
 	 * @return
-	 */                      
+	 */
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 
@@ -46,24 +46,22 @@ public class ProjectOrsApplication extends SpringBootServletInitializer{
 			/**
 			 * Add CORS
 			 */
-			
-			
-			
 			public void addCorsMappings(CorsRegistry registry) {
 				CorsRegistration cors = registry.addMapping("/**");
 				cors.allowedOrigins("http://localhost:4200");
 				cors.allowedHeaders("*");
 				cors.allowCredentials(true);
-			}   
+			}
 			
 			/**
 			 * Add Interceptors
 			 */
-		
-		 @Override public void addInterceptors(InterceptorRegistry registry) {
-			 registry.addInterceptor(frontCtl).addPathPatterns("/**").excludePathPatterns(
-			  "/Auth/**"); }
-			 
+			
+			/*
+			 * @Override public void addInterceptors(InterceptorRegistry registry) {
+			 * registry.addInterceptor(frontCtl).addPathPatterns("/**").excludePathPatterns(
+			 * "/Auth/**"); }
+			 */
 			  
 			  
 			/*
@@ -71,7 +69,7 @@ public class ProjectOrsApplication extends SpringBootServletInitializer{
 			 * registry.addResourceHandler("/**").addResourceLocations("classpath:/public/")
 			 * ; }
 			 * 
-			 */ 
+			 */
 			  
 			 
 			 
@@ -81,7 +79,6 @@ public class ProjectOrsApplication extends SpringBootServletInitializer{
 
 		return w;
 	}
-	
 
 }
 	

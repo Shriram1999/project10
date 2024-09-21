@@ -21,7 +21,7 @@ import com.rays.exception.DuplicateRecordException;
 
 
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  * @param <T>
  */
@@ -46,15 +46,15 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 	 */
 	public T findByUniqueKey(String attribute, Object val, UserContext userContext) {
 
-		Class<T> dtoClass = getDTOClass();//same dto intance return
+		Class<T> dtoClass = getDTOClass();
 
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
 		CriteriaQuery<T> cq = builder.createQuery(dtoClass);
 
-		Root<T> qRoot = cq.from(dtoClass);//etitys refrense provaid
+		Root<T> qRoot = cq.from(dtoClass);
 
-		Predicate condition = builder.equal(qRoot.get(attribute), val);//interface boolean value return krta h
+		Predicate condition = builder.equal(qRoot.get(attribute), val);
 
 		if (userContext != null && !isZeroNumber(userContext.getOrgId())) {
 			Predicate conditionGrp = builder.equal(qRoot.get("orgId"), userContext.getOrgId());
@@ -116,11 +116,15 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 		List<Order> orderBys = getOrderByClause(dto, builder, qRoot);
 
 		System.out.println("after getOrder By clause........vipin");
+		
 		cq.orderBy(orderBys.toArray(new Order[orderBys.size()]));
 		
 		System.out.println("After order by clause.......vipin ");
+		
 		TypedQuery<T> query = entityManager.createQuery(cq);
+		
 		System.out.println("createCriteria end here---....vipin");
+		
 		return query;
 
 	}
@@ -134,6 +138,8 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 	 * @return
 	 */
 	protected abstract List<Predicate> getWhereClause(T dto, CriteriaBuilder builder, Root<T> qRoot);
+	
+	
 
 	public List search(T dto, int pageNo, int pageSize, UserContext userContext) {
 		System.out.println("BaseDao search run");

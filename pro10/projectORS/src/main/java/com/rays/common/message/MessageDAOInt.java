@@ -4,7 +4,7 @@ import com.rays.common.BaseDAOInt;
 
 /**
  * Role DAO interface.
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 public interface MessageDAOInt extends BaseDAOInt<MessageDTO> {
 

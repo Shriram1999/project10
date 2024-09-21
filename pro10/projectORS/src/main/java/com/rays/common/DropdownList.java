@@ -4,7 +4,7 @@ package com.rays.common;
  * DropdownList interface is implemented by DTOs those are used to create drop
  * down list on HTML pages
  * 
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  * 
  */
 public interface DropdownList {

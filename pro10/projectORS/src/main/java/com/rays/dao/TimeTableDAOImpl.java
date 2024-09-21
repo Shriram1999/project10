@@ -19,7 +19,7 @@ import com.rays.dto.SubjectDTO;
 import com.rays.dto.TimeTableDTO;
 import com.rays.dto.UserDTO;
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 @Repository

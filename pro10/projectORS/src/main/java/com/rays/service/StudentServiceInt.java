@@ -6,7 +6,7 @@ import com.rays.dto.StudentDTO;
 
 /**
  * College Service interface.
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 
 public interface StudentServiceInt extends BaseServiceInt<StudentDTO> {

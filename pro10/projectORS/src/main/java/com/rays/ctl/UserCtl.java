@@ -1,4 +1,3 @@
-
 package com.rays.ctl;
 
 import java.io.IOException;
@@ -39,7 +38,7 @@ import com.rays.form.UserForm;
 import com.rays.service.RoleServiceInt;
 import com.rays.service.UserServiceInt;
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 @RestController
@@ -48,7 +47,7 @@ public class UserCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 
 	@Autowired
 	RoleServiceInt roleService = null;
-	
+
 	@Autowired
 	UserServiceInt userService;
 
@@ -80,7 +79,7 @@ public class UserCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 		//res.setSuccess(true);
 		res.addMessage("Logout Successfully");
 		//res.addResult("roleList", list);
-		System.out.println("ram logout");
+		System.out.println("Utkarsh Verma logout");
 		return res;
 	}
 
@@ -223,7 +222,7 @@ public class UserCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 	public ORSResponse uploadPic(@PathVariable Long userId, @RequestParam("file") MultipartFile file,
 			HttpServletRequest req) {
 
-		System.out.println("User ID id --------------vipin" + userId);
+		System.out.println("User ID id --------------Utkarsh Verma" + userId);
 
 		UserDTO userDTO = baseService.findById(userId, userContext);
 

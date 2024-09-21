@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Contains attached file information and data
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 
 @Entity
@@ -39,7 +39,7 @@ public class AttachmentDTO extends AttachmentBaseDTO {
 	/**
 	 * Contains file data
 	 */
-	@Lob //large object ko contain krta h 
+	@Lob
 	@Column(name = "DOC")
 	private byte[] doc;
 

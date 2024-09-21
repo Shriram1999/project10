@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  * Contains email subject, body and attached files to be sent
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 public class EmailDTO {

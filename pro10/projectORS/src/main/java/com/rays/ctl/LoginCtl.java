@@ -44,7 +44,7 @@ import com.rays.service.UserServiceInt;
 /**
  * Login controller provides API for Sign Up, Sign In and Forgot password
  * operations
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 @RestController
 @RequestMapping(value = "Auth")
@@ -93,8 +93,8 @@ public class LoginCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 		ORSResponse res = validate(bindingResult);
 
 		if (!res.isSuccess()) {
-			return res;
-  		}
+			return res; 
+		}
 
 		UserDTO dto = baseService.authenticate(form.getLoginId(), form.getPassword());
 		if (dto == null) {
@@ -104,13 +104,13 @@ public class LoginCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 		} else {
 			UserContext context = new UserContext(dto);
 			
-            // session.setAttribute("userContext", context); 				
+//			 session.setAttribute("userContext", context); 				
 			
 			session.setAttribute("test", dto.getFirstName()); 
 			
 			res.setSuccess(true);
 			res.addData(dto);
-			 res.addResult("jsessionid", session.getId()); 
+			res.addResult("jsessionid", session.getId()); 
 			res.addResult("loginId", dto.getLoginId());
 			res.addResult("role", dto.getRoleName());
 			res.addResult("fname", dto.getFirstName());
@@ -126,7 +126,7 @@ public class LoginCtl extends BaseCtl<UserForm, UserDTO, UserServiceInt> {
 			res.addResult("token", token);
 			return res;
 			
-		}	
+		}
 		
 		return res;
 	}

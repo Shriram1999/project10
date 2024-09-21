@@ -25,7 +25,7 @@ import com.rays.service.SubjectServiceInt;
 
 
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 @RestController

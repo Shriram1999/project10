@@ -2,11 +2,12 @@ package com.rays.common;
 
 import java.util.List;
 
+import com.rays.dto.UserDTO;
 import com.rays.exception.DuplicateRecordException;
 
 /**
  * Role Service interface.
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 
 public interface BaseServiceInt<T extends BaseDTO> {
@@ -49,7 +50,8 @@ public interface BaseServiceInt<T extends BaseDTO> {
 	 */
 	public T findById(long id, UserContext userContext);
 
-
+	/* public T findByLoginId(String name, UserContext userContext); */
+	
 	public T findByUniqueKey(String att, String val, UserContext userContext);
 	
 	/**

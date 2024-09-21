@@ -1,4 +1,3 @@
-
 package com.rays.common;
 
 import java.util.Date;
@@ -24,11 +23,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rays.dto.MarksheetDTO;
 import com.rays.dto.UserDTO;
+import com.rays.service.UserServiceInt;
 
 /**
  * Base controller class contains get, search, save, delete REST APIs
  * 
- * @author Aakash Rathod
+ * @author Utkarsh Verma
  */
 public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends BaseServiceInt<T>> {
 
@@ -108,7 +108,7 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 		} else {
 
 			res.setSuccess(false);
-			//res.addMessage("Record not found");
+			// res.addMessage("Record not found");
 		}
 		return res;
 	}
@@ -135,8 +135,7 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 	}
 
 	@PostMapping("deleteMany/{ids}")
-	public ORSResponse deleteMany(@PathVariable String[] ids, @RequestParam("pageNo") String pageNo,
-			@RequestBody F form) {
+	public ORSResponse deleteMany(@PathVariable String[] ids, @RequestParam("pageNo") String pageNo,@RequestBody F form) {
 		System.out.println("BaseCtl DeleteMany() method....vipin... run");
 		ORSResponse res = new ORSResponse(true);
 		try {
@@ -176,7 +175,7 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 	 * Search entities by form attributes
 	 * 
 	 * @param form
-	 * @return 
+	 * @return
 	 */
 	@RequestMapping(value = "/search", method = { RequestMethod.GET, RequestMethod.POST })
 	public ORSResponse search(@RequestBody F form) {
@@ -225,25 +224,29 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 	}
 
 	@PostMapping("/save")
-	public ORSResponse save(@Valid @RequestBody F form, BindingResult bindingResult) {
+	public ORSResponse save(@RequestBody @Valid F form, BindingResult bindingResult) {
 		System.out.println("228save() run in BaseCtl :: +vipin " + form);
 		ORSResponse res = validate(bindingResult);
 
 		if (res.isSuccess() == false) {
 			return res;
 		}
-
 		try {
 			T dto = (T) form.getDto();
 			System.out.println("237----------->" + dto);
 			if (dto.getId() != null && dto.getId() > 0) {
+				T existDto1 = (T) baseService.findByUniqueKey(dto.getUniqueKey(), dto.getUniqueValue(), userContext);
+				if (existDto1 != null && dto.getId()!=existDto1.getId()) {
+					res.addMessage(dto.getLabel() + " already exist");
+					res.setSuccess(false);
+					return res;
+			}
 				baseService.update(dto, userContext);
+
 			} else {
 				System.out.println("before calling add of baseservice");
-				if (dto.getUniqueKey()!=null && !dto.getUniqueKey().equals("")) {
-					System.out.println("243----------->" + dto);
-					T existDto = (T) baseService.findByUniqueKey(dto.getUniqueKey(), dto.getUniqueValue(),
-							userContext);
+				if (dto.getUniqueKey() != null && !dto.getUniqueKey().equals("")) {
+					T existDto = (T) baseService.findByUniqueKey(dto.getUniqueKey(), dto.getUniqueValue(), userContext);
 					if (existDto != null) {
 						System.out.println("247----------->" + existDto);
 						res.addMessage(dto.getLabel() + " already exist");
@@ -269,13 +272,12 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 	 * @param bindingResult
 	 * @return
 	 */
-	public ORSResponse validate(BindingResult bindingResult) {          //errors bind krne ka kam kr rha h
+	public ORSResponse validate(BindingResult bindingResult) {
 		ORSResponse res = new ORSResponse(true);
-		System.out.println("inside the validate method of baseCtl.vipin");
+		System.out.println("inside the validate method of baseCtl.Utkarsh Verma");
 		if (bindingResult.hasErrors()) {
 
 			res.setSuccess(false);
-			
 
 			Map<String, String> errors = new HashMap<String, String>();
 
@@ -283,7 +285,7 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 			// Lambda expression Java 8 feature
 			list.forEach(e -> {
 				errors.put(e.getField(), e.getDefaultMessage());
-				System.out.println("Vipin.....validate");
+				System.out.println("Utkarsh Verma.....validate");
 				System.out.println("Field :: " + e.getField() + "  Message :: " + e.getDefaultMessage());
 			});
 			res.addInputErrors(errors);

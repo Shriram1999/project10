@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 @Component
@@ -23,7 +23,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint, Se
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException {
-		System.out.println("jwt Authentication token run........Shriram Patel");
+		System.out.println("jwt Authentication token run........Utkarsh Verma ");
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "OOPS! Your session has been expired");
 	}
 }

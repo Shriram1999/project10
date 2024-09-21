@@ -20,7 +20,7 @@ import com.rays.dto.UserDTO;
 /**
  * Contains User CRUD operations
  * 
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 @Repository

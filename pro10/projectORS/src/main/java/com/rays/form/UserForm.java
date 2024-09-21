@@ -15,7 +15,7 @@ import com.rays.dto.UserDTO;
 /**
  * Contains User form elements and their declarative input validations.
  * 
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 public class UserForm extends BaseForm {
 

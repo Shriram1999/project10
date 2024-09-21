@@ -2,9 +2,12 @@ package com.rays.common;
 
 import java.lang.reflect.Method;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 /**
  * Contains generic attributes of a form. It is extended by all form beans.
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 
 public class BaseForm {
@@ -15,6 +18,11 @@ public class BaseForm {
 	protected Long id = null;
 
 	private Long[] ids;
+     
+	  
+	/* private String login; */
+	
+
 
 	/**
 	 * Current page number, 0 is first page index
@@ -66,6 +74,12 @@ public class BaseForm {
 	public void setIds(Long[] ids) {
 		this.ids = ids;
 	}
+	
+	/*
+	 * public String getLogin() { return login; }
+	 * 
+	 * public void setLogin(String login) { this.login = login; }
+	 */
 
 	public int getPageNo() {
 		return pageNo;

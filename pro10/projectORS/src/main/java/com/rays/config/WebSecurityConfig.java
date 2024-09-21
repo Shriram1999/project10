@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 @Configuration
@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// We don't need CSRF for this example
 		httpSecurity.csrf().disable()
 				// dont authenticate this particular request
-				.authorizeRequests().antMatchers("/Auth/**","/User/profilePic/**", "/Jasper/**").permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
+				.authorizeRequests().antMatchers("/Auth/**","/User/profilePic/**","/Jasper/**").permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
 				.permitAll().
 				// all other requests need to be authenticated
 						anyRequest().authenticated().and().

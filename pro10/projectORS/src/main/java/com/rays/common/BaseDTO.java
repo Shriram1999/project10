@@ -16,7 +16,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 /**
  * Base class extended by all DTOs.
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 @MappedSuperclass
 public abstract class BaseDTO implements Serializable, DropdownList, Comparable<BaseDTO> {
@@ -31,7 +31,8 @@ public abstract class BaseDTO implements Serializable, DropdownList, Comparable<
 	protected Long id;
 	/**
 	 * Contains USER ID who created this database record
-	 */
+	*/
+	
 	@Column(name = "CREATED_BY", length = 50)
 	protected String createdBy = "root";
 	/**

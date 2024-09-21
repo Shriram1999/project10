@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -46,52 +47,55 @@ import net.sf.jasperreports.engine.JasperReport;
  */
 /**
  * The Class JasperCtl.
- * 
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 
 @Transactional
 
 @RestController
 @RequestMapping(value = "Jasper")
-public class JasperCtl extends BaseCtl<MarksheetForm, MarksheetDTO, MarksheetServiceInt> {
+public class JasperCtl extends BaseCtl<MarksheetForm, MarksheetDTO, MarksheetServiceInt>{
 
 	/** The session factory. */
-
+	
 //	  @Autowired 
-	private SessionFactory sessionFactory = null;
-
-	/** For jasper report */
-	@Value("${jasper.path}")
-	String path ;
-
-	/** The context. */
-
-	@Autowired
-	ServletContext context;
-
-	@PersistenceContext
-	protected EntityManager entityManager;
-
-	/**
-	 * Display.
-	 *
-	 * @param request  the request
-	 * @param response the response
-	 * @throws JRException  the JR exception
-	 * @throws SQLException the SQL exception
-	 * @throws IOException  Signals that an I/O exception has occurred.
-	 */
-	@GetMapping(value = "/report", produces = { MediaType.APPLICATION_JSON_VALUE })
+	  private SessionFactory sessionFactory=null;
+	  
+//	  for jasper report
+	  @Value("${jasper.path}")
+	  String path = null;
+	  
+	 /** The context. */
+	
+	  @Autowired 
+	  ServletContext context;
+	  
+	  @PersistenceContext
+	  protected EntityManager entityManager;
+	  
+	 /**
+		 * Display.
+		 *
+		 * @param request  the request
+		 * @param response the response
+		 * @throws JRException  the JR exception
+		 * @throws SQLException the SQL exception
+		 * @throws IOException  Signals that an I/O exception has occurred.
+		 */
+	  @GetMapping(value="/report",produces = {MediaType.APPLICATION_JSON_VALUE})
 	public void display(HttpServletRequest request, HttpServletResponse response)
 			throws JRException, SQLException, IOException {
 		System.out.println("********************** Jasper Ctl*********************");
 		ORSResponse res = new ORSResponse(true);
-
+		//ResourceBundle rb =ResourceBundle.getBundle("application");
+		
+		//context.getRealPath(rb.getString("jasper"));
+		
 		Connection con = null;
 		JasperReport jasperReport = JasperCompileManager.compileReport(path);
 		Map<String, Object> map = new HashMap<String, Object>();
-		this.sessionFactory = entityManager.getEntityManagerFactory().unwrap(SessionFactory.class);
+		 this.sessionFactory =
+				 entityManager.getEntityManagerFactory().unwrap(SessionFactory.class);
 		con = sessionFactory.getSessionFactoryOptions().getServiceRegistry().getService(ConnectionProvider.class)
 				.getConnection();
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, con);
@@ -100,7 +104,7 @@ public class JasperCtl extends BaseCtl<MarksheetForm, MarksheetDTO, MarksheetSer
 		response.getOutputStream().write(pdf);
 		response.getOutputStream().flush();
 		System.out.println("Thanks");
-		// return MediaType.APPLICATION_JSON_VALUE;
+		//return MediaType.APPLICATION_JSON_VALUE;
 	}
 
 }

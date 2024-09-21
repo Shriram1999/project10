@@ -21,7 +21,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 
 
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  */
 @Component
@@ -42,7 +42,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		System.out.println(" Front Ctl Called " + path);
 		final String withCre = request.getHeader("name");
 		System.out.println(withCre +"--->>> credentials");
-		System.out.println("JWTRequestFilter run success....vipin");
+		System.out.println("JWTRequestFilter run success....Utkarsh Verma");
+		
 		final String requestTokenHeader = request.getHeader("Authorization");
 		System.out.println(requestTokenHeader+"JWTFILTER IN CONFIG _______====");
 		String username = null;
@@ -69,7 +70,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
 			// if token is valid configure Spring Security to manually set authentication
 			if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
-				System.out.println("inside validate Token.......vipin");
+				System.out.println("inside validate Token.......Utkarsh Verma");
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
 				usernamePasswordAuthenticationToken

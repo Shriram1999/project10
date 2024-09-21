@@ -8,13 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.rays.dto.UserDTO;
 import com.rays.exception.DatabaseException;
 import com.rays.exception.DuplicateRecordException;
 
 
 
 /**
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  *
  * @param <T>
  * @param <D>
@@ -32,6 +33,12 @@ public abstract class BaseServiceImpl<T extends BaseDTO, D extends BaseDAOInt<T>
 		// T dto baseDao.findByPK(Class<T>, pk)
 		return dto;
 	}
+	
+	/*
+	 * @Transactional(readOnly = true) public T findByLoginId(String login,
+	 * UserContext userContext) { return baseDao.findByUniqueKey("loginId", login,
+	 * userContext); }
+	 */
 	
 	@Transactional(readOnly = true)
 	public T findByUniqueKey(String att, String val, UserContext userContext) {

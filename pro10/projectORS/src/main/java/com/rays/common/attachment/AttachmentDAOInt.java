@@ -7,7 +7,7 @@ import com.rays.common.UserContext;
 
 /**
  * Role DAO interface.
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  */
 public interface AttachmentDAOInt extends BaseDAOInt<AttachmentDTO> {
 

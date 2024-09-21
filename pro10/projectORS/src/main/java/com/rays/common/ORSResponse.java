@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Contains REST response
  * 
- * @author Shriram Patel
+ * @author Utkarsh Verma 
  * 
  *
  */
@@ -20,15 +20,13 @@ public class ORSResponse {
 
 	private Map<String, Object> result = new HashMap<String, Object>();
 
-	private String jwttoken;
-
-	public ORSResponse(String jwttoken) {
-		this.jwttoken = jwttoken;
-	}
-
-	public String getToken() {
-		return this.jwttoken;
-	}
+	/*
+	 * private String jwttoken;
+	 * 
+	 * public ORSResponse(String jwttoken) { this.jwttoken = jwttoken; }
+	 * 
+	 * public String getToken() { return this.jwttoken; }
+	 */
 	
 	public ORSResponse() {
 	}
@@ -46,11 +44,11 @@ public class ORSResponse {
 		this.success = success;
 		addMessage(message);
 		addData(value);
-		System.out.println("....Vipin....");
+		System.out.println("....utkarsh....");
 	}
 
 	public boolean isSuccess() {
-		return success; 
+		return success;
 	}
 	
 	public void setSuccess(boolean success) {
